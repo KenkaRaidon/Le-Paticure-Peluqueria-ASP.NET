@@ -12,6 +12,7 @@ namespace Negocios
 {
     public class N_Usuario
     {
+        N_Empleado NC = new N_Empleado();
         readonly D_SQL_Datos sqlD = new D_SQL_Datos();
 
         public string InsertarUsuario(E_Usuario pUsuario)
@@ -58,6 +59,11 @@ namespace Negocios
         public E_Usuario Login(string pNickname, string pPassword)
         {
             return (from Usuario in LstUsuarios() where Usuario.NombreUsuario == pNickname && Usuario.PasswordUsuario == pPassword select Usuario).SingleOrDefault();
+        }
+        public List<E_Empleado> LstDropDownListEmpleado()
+        {
+            return (from Empleados in NC.LstEmpleados()
+                    select Empleados).ToList<E_Empleado>();
         }
     }
 }

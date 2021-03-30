@@ -79,6 +79,7 @@
     <Content Include="Web.config" />
     <Content Include="WebForms\Empleados.aspx" />
     <Content Include="WebForms\Login.aspx" />
+    <Content Include="WebForms\Usuarios.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\wfucClave.ascx.cs">
@@ -137,6 +138,13 @@
     </Compile>
     <Compile Include="WebForms\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

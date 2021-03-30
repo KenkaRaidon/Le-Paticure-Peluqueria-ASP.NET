@@ -21,12 +21,13 @@
                         <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Empleados</a>
+                        <a class="nav-link" href="../WebForms/Empleados.aspx">Empleados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Clientes</a>
+                        <a class="nav-link" href="../WebForms/Usuarios.aspx">Usuarios</a>
                     </li>
                 </ul>
+                <asp:Button ID="btnCerrarSesion" runat="server" CssClass="btn-danger" Text="Cerrar sesion" CausesValidation="false" OnClick="btnCerrarSesion_Click" />
             </nav>
         </header>
         <div class="container">
