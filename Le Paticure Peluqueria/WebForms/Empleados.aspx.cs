@@ -17,8 +17,17 @@ namespace Le_Paticure_Peluqueria.WebForms
         N_Empleado NC = new N_Empleado();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-                ControlsInit();
+            if (Session["snLogin"] != null)
+            {
+                string Usuario = (string)Session["snLogin"];
+                lblUsuario.Text = "Bienvenid@ " + Usuario;
+                if (!IsPostBack)
+                    ControlsInit();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         #region Metodos General
@@ -66,7 +75,7 @@ namespace Le_Paticure_Peluqueria.WebForms
                 ApellidoEmpleado = tbApellidoEmpleado.Text.Trim(),
                 DireccionEmpleado = tbDireccionEmpleado.Text.Trim(),
                 TelCelEmpleado = tbTelCelEmpleado.Text.Trim(),
-                EmailEmpleado=TbEmailEmpleado.Text.Trim()
+                EmailEmpleado = TbEmailEmpleado.Text.Trim()
             };
             return Empleado;
         }

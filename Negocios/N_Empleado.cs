@@ -17,7 +17,7 @@ namespace Negocios
         public string InsertarEmpleado(E_Empleado pEmpleado)
         {
             pEmpleado.Accion = "INSERTAR";
-            string R = sqlD.IBM_Entidad<E_Empleado>("IBM_Empleado", pEmpleado);
+            string R = sqlD.IBM_Entidad<E_Empleado>("IBM_Empleados", pEmpleado);
             if (R.Contains("Exito"))
                 return "Exito se ha introducido los datos correctamente";
             return "Error los datos no se han introducido";
@@ -29,7 +29,7 @@ namespace Negocios
                 Accion = "BORRAR",
                 IdEmpleado = pIdEmpleado
             };
-            string R = sqlD.IBM_Entidad<E_Empleado>("IBM_Empleado", Empleado);
+            string R = sqlD.IBM_Entidad<E_Empleado>("IBM_Empleados", Empleado);
             if (R.Contains("Exito"))
                 return "Exito se han borrado los datos correctamente";
             return "Error los datos no se han borrado";
@@ -37,7 +37,7 @@ namespace Negocios
         public string ModificarEmpleado(E_Empleado pEmpleado)
         {
             pEmpleado.Accion = "MODIFICAR";
-            string R = sqlD.IBM_Entidad<E_Empleado>("IBM_Empleado", pEmpleado);
+            string R = sqlD.IBM_Entidad<E_Empleado>("IBM_Empleados", pEmpleado);
             if (R.Contains("Exito"))
                 return "Exito se han modificado los datos correctamente";
             return "Error los datos no se han modificado";

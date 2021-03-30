@@ -66,6 +66,7 @@
   <ItemGroup>
     <Content Include="Controls\wfucClave.ascx" />
     <Content Include="Controls\wfucEmail.ascx" />
+    <Content Include="Controls\wfucPassword.ascx" />
     <Content Include="Controls\wfucRequerido.ascx" />
     <Content Include="Controls\wfucTelefono.ascx" />
     <Content Include="CSS\bootstrap.min.css" />
@@ -77,6 +78,7 @@
     <Content Include="JS\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="WebForms\Empleados.aspx" />
+    <Content Include="WebForms\Login.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\wfucClave.ascx.cs">
@@ -92,6 +94,13 @@
     </Compile>
     <Compile Include="Controls\wfucEmail.ascx.designer.cs">
       <DependentUpon>wfucEmail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\wfucPassword.ascx.cs">
+      <DependentUpon>wfucPassword.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\wfucPassword.ascx.designer.cs">
+      <DependentUpon>wfucPassword.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\wfucRequerido.ascx.cs">
       <DependentUpon>wfucRequerido.ascx</DependentUpon>
@@ -121,6 +130,13 @@
     </Compile>
     <Compile Include="WebForms\Empleados.aspx.designer.cs">
       <DependentUpon>Empleados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

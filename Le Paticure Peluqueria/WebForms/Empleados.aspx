@@ -5,10 +5,6 @@
 <%@ Register Src="~/Controls/wfucTelefono.ascx" TagPrefix="uc1" TagName="wfucTelefono" %>
 <%@ Register Src="~/Controls/wfucEmail.ascx" TagPrefix="uc1" TagName="wfucEmail" %>
 
-
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
