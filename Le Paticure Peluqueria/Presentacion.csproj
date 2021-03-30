@@ -64,6 +64,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controls\wfucClave.ascx" />
+    <Content Include="Controls\wfucEmail.ascx" />
+    <Content Include="Controls\wfucRequerido.ascx" />
+    <Content Include="Controls\wfucTelefono.ascx" />
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\Main.css" />
     <Content Include="DLL\DatosSQL.dll" />
@@ -75,6 +79,34 @@
     <Content Include="WebForms\Empleados.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\wfucClave.ascx.cs">
+      <DependentUpon>wfucClave.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\wfucClave.ascx.designer.cs">
+      <DependentUpon>wfucClave.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\wfucEmail.ascx.cs">
+      <DependentUpon>wfucEmail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\wfucEmail.ascx.designer.cs">
+      <DependentUpon>wfucEmail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\wfucRequerido.ascx.cs">
+      <DependentUpon>wfucRequerido.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\wfucRequerido.ascx.designer.cs">
+      <DependentUpon>wfucRequerido.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\wfucTelefono.ascx.cs">
+      <DependentUpon>wfucTelefono.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\wfucTelefono.ascx.designer.cs">
+      <DependentUpon>wfucTelefono.ascx</DependentUpon>
+    </Compile>
     <Compile Include="index.Master.cs">
       <DependentUpon>index.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
