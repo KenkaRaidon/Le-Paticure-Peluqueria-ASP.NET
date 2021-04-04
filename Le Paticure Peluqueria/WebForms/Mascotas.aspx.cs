@@ -87,7 +87,7 @@ namespace Le_Paticure_Peluqueria.WebForms
         {
             ControlsInit();
             pnlGrvMascotas.Visible = true;
-            DataTable dt = consultar("SELECT Mascotas.IdMascota, Mascotas.ClaveMascota, Mascotas.NombreMascota, Raza.Raza FROM Mascotas, Raza WHERE Mascotas.IdMascota=Raza.IdRaza");
+            DataTable dt = consultar("SELECT Mascotas.IdMascota, Mascotas.ClaveMascota, Mascotas.NombreMascota, Raza.Raza FROM Mascotas, Raza WHERE Mascotas.IdRaza=Raza.IdRaza");
             int count = dt.Rows.Count;
             lblNumeroRegistro.Text = count.ToString();
             if (count.Equals(0))
