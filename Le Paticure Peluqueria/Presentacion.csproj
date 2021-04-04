@@ -79,6 +79,7 @@
     <Content Include="Web.config" />
     <Content Include="WebForms\Empleados.aspx" />
     <Content Include="WebForms\Login.aspx" />
+    <Content Include="WebForms\Mascotas.aspx" />
     <Content Include="WebForms\Usuarios.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,13 @@
     </Compile>
     <Compile Include="WebForms\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Mascotas.aspx.cs">
+      <DependentUpon>Mascotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Mascotas.aspx.designer.cs">
+      <DependentUpon>Mascotas.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
