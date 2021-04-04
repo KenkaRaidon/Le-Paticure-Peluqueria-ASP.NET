@@ -39,6 +39,8 @@
                     <asp:BoundField DataField="NombreUsuario" HeaderText="Nombre" />
                     <asp:BoundField DataField="PasswordUsuario" HeaderText="Password" />
                     <asp:BoundField DataField="IdEmpleado" HeaderText="Id de Empleado" />
+                    <asp:BoundField DataField="NombreEmpleado" HeaderText="Nombre de Empleado" />
+                    <asp:BoundField DataField="ApellidoEmpleado" HeaderText="Apellido de Empleado" />
                     <asp:TemplateField InsertVisible="false" ShowHeader="true" HeaderText="EDITAR">
                         <ItemTemplate>
                             <asp:LinkButton ID="grvBtnEditar" runat="server" CommandName="Edit">Editar</asp:LinkButton>

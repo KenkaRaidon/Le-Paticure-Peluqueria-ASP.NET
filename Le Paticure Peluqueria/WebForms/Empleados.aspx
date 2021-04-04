@@ -29,11 +29,11 @@
             </div>
         </div>
 
-        <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+        <asp:Label ID="lblMensaje" runat="server"></asp:Label> 
         <%--Panel de listado empleados--%>
         <asp:Panel ID="pnlGrvEmpleados" runat="server">
             <div class="container mt-3">
-                <h6 class="text-dark ml-0">
+                <h6 class="text-dark ml-0">Registros encontrados:
                     <asp:Label ID="lblNumeroRegistro" runat="server"></asp:Label>
                 </h6>
                 <asp:GridView ID="grvEmpleados" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IdEmpleado" ForeColor="#333333" GridLines="None" OnRowEditing="grvEmpleados_RowEditing" OnRowDeleting="grvEmpleados_RowDeleting">

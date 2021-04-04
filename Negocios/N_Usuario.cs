@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data;
 using Entidades;
 using DatosSQL;
+using System.Data.SqlClient;
 
 namespace Negocios
 {
@@ -14,7 +15,7 @@ namespace Negocios
     {
         N_Empleado NC = new N_Empleado();
         readonly D_SQL_Datos sqlD = new D_SQL_Datos();
-
+        
         public string InsertarUsuario(E_Usuario pUsuario)
         {
             pUsuario.Accion = "INSERTAR";
@@ -59,11 +60,6 @@ namespace Negocios
         public E_Usuario Login(string pNickname, string pPassword)
         {
             return (from Usuario in LstUsuarios() where Usuario.NombreUsuario == pNickname && Usuario.PasswordUsuario == pPassword select Usuario).SingleOrDefault();
-        }
-        public List<E_Empleado> LstDropDownListEmpleado()
-        {
-            return (from Empleados in NC.LstEmpleados()
-                    select Empleados).ToList<E_Empleado>();
         }
     }
 }

@@ -83,16 +83,21 @@ namespace Le_Paticure_Peluqueria.WebForms
                 ddlEmpleado.Text = Usuario.IdEmpleado.ToString();
             }
         }
-        protected void VisualizarGrvUsuarios(List<E_Usuario> LstUsuario)
+        protected void VisualizarGrvUsuarios()
         {
             ControlsInit();
             pnlGrvUsuarios.Visible = true;
-            lblNumeroRegistro.Text = LstUsuario.Count.ToString();
-            if (LstUsuario.Count.Equals(0))
+            DataTable dt = consultar("SELECT Usuarios.IdUsuario, Usuarios.NombreUsuario, Usuarios.PasswordUsuario, Empleados.IdEmpleado, Empleados.NombreEmpleado, Empleados.ApellidoEmpleado FROM Empleados, Usuarios WHERE Empleados.IdEmpleado = Usuarios.IdEmpleado");
+            int count = dt.Rows.Count;
+            lblNumeroRegistro.Text = count.ToString();
+            if (count.Equals(0))
+            {
+                pnlGrvUsuarios.Visible = false;
                 lblMensaje.Text = "No hay informacion para mostrar";
+            } 
             else
             {
-                grvUsuarios.DataSource = LstUsuario;
+                grvUsuarios.DataSource = dt;
                 grvUsuarios.DataBind();
             }
         }
@@ -109,7 +114,7 @@ namespace Le_Paticure_Peluqueria.WebForms
         protected void btnMenuListado_Click(object sender, EventArgs e)
         {
             pnlGrvUsuarios.Visible = true;
-            VisualizarGrvUsuarios(NU.LstUsuarios());
+            VisualizarGrvUsuarios();
         }
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -130,7 +135,7 @@ namespace Le_Paticure_Peluqueria.WebForms
                         pnlCapturaDatos.Visible = true;
                         break;
                     default:
-                        VisualizarGrvUsuarios(LstUsuario);
+                        VisualizarGrvUsuarios();
                         break;
                 }
             }
@@ -143,14 +148,14 @@ namespace Le_Paticure_Peluqueria.WebForms
             ddlEmpleado.DataValueField = "IdEmpleado";
             ddlEmpleado.DataBind();
         }
-        public DataSet consultar(string strSQL)
+        public DataTable consultar(string strSQL)
         {
             string con = "Data Source=DESKTOP-OTHRDKV\\SQLEXPRESS;Initial Catalog=PeluqueriaPeticure;Integrated Security=True";
             SqlConnection conn = new SqlConnection(con);
             conn.Open();
             SqlCommand cmd = new SqlCommand(strSQL, conn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds= new DataSet();
+            DataTable ds= new DataTable();
             da.Fill(ds);
             conn.Close();
             return ds;
@@ -160,13 +165,13 @@ namespace Le_Paticure_Peluqueria.WebForms
         protected void btnInsertar_Click(object sender, EventArgs e)
         {
             lblMensaje.Text = NU.InsertarUsuario(ControlsWebForm_ObjetoIdentidad());
-            VisualizarGrvUsuarios(NU.LstUsuarios());
+            VisualizarGrvUsuarios();
         }
 
         protected void btnBorrar_Click(object sender, EventArgs e)
         {
             lblMensaje.Text = NU.BorrarUsuario(Convert.ToInt32(hfIdUsuario.Value));
-            VisualizarGrvUsuarios(NU.LstUsuarios());
+            VisualizarGrvUsuarios();
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
@@ -176,7 +181,7 @@ namespace Le_Paticure_Peluqueria.WebForms
             Usuario.PasswordUsuario = tbPasswordUsuario.Text;
             Usuario.IdEmpleado =Convert.ToInt32(ddlEmpleado.Text);
             lblMensaje.Text = NU.ModificarUsuario(Usuario);
-            VisualizarGrvUsuarios(NU.LstUsuarios());
+            VisualizarGrvUsuarios();
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e) => ControlsInit();
