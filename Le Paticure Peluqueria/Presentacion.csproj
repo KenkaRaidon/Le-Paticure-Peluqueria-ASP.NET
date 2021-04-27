@@ -77,6 +77,7 @@
     <Content Include="JS\jquery-3.2.1.slim.min.js" />
     <Content Include="JS\popper.min.js" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\Citas.aspx" />
     <Content Include="WebForms\Empleados.aspx" />
     <Content Include="WebForms\Login.aspx" />
     <Content Include="WebForms\Mascotas.aspx" />
@@ -126,6 +127,13 @@
       <DependentUpon>index.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\Citas.aspx.cs">
+      <DependentUpon>Citas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Citas.aspx.designer.cs">
+      <DependentUpon>Citas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\Empleados.aspx.cs">
       <DependentUpon>Empleados.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

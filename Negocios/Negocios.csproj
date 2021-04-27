@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="N_Cita.cs" />
     <Compile Include="N_Empleado.cs" />
     <Compile Include="N_Mascota.cs" />
     <Compile Include="N_Usuario.cs" />

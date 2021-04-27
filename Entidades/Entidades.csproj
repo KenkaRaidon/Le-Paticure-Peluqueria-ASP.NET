@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="E_Cita.cs" />
     <Compile Include="E_Empleado.cs" />
     <Compile Include="E_Mascota.cs" />
     <Compile Include="E_Usuario.cs" />
