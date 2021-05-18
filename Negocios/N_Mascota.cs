@@ -52,7 +52,9 @@ namespace Negocios
         {
             return (from Mascotas in LstMascotas()
                     where Mascotas.NombreMascota.Contains(pCriterioBusqueda) ||
-                    Mascotas.ClaveMascota.Contains(pCriterioBusqueda)
+                    Mascotas.ClaveMascota.Contains(pCriterioBusqueda)||
+                    Mascotas.TelCelDueño.Contains(pCriterioBusqueda)||
+                    Mascotas.EmailDueño.Contains(pCriterioBusqueda)
                     select Mascotas).ToList<E_Mascota>();
         }
         

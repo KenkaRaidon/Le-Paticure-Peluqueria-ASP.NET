@@ -141,6 +141,24 @@ namespace Le_Paticure_Peluqueria.WebForms
         protected global::System.Web.UI.WebControls.DropDownList ddlRaza;
 
         /// <summary>
+        /// Control tbTelCelDueño.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Le_Paticure_Peluqueria.Controls.wfucTelefono tbTelCelDueño;
+
+        /// <summary>
+        /// Control tbEmailDueño.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Le_Paticure_Peluqueria.Controls.Email tbEmailDueño;
+
+        /// <summary>
         /// Control btnInsertar.
         /// </summary>
         /// <remarks>

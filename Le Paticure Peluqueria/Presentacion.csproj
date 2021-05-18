@@ -66,6 +66,7 @@
   <ItemGroup>
     <Content Include="Controls\wfucClave.ascx" />
     <Content Include="Controls\wfucEmail.ascx" />
+    <Content Include="Controls\wfucMensajeEmail.ascx" />
     <Content Include="Controls\wfucPassword.ascx" />
     <Content Include="Controls\wfucRequerido.ascx" />
     <Content Include="Controls\wfucTelefono.ascx" />
@@ -78,6 +79,7 @@
     <Content Include="JS\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="WebForms\Citas.aspx" />
+    <Content Include="WebForms\EmailCita.aspx" />
     <Content Include="WebForms\Empleados.aspx" />
     <Content Include="WebForms\Login.aspx" />
     <Content Include="WebForms\Mascotas.aspx" />
@@ -97,6 +99,13 @@
     </Compile>
     <Compile Include="Controls\wfucEmail.ascx.designer.cs">
       <DependentUpon>wfucEmail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\wfucMensajeEmail.ascx.cs">
+      <DependentUpon>wfucMensajeEmail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\wfucMensajeEmail.ascx.designer.cs">
+      <DependentUpon>wfucMensajeEmail.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\wfucPassword.ascx.cs">
       <DependentUpon>wfucPassword.ascx</DependentUpon>
@@ -133,6 +142,13 @@
     </Compile>
     <Compile Include="WebForms\Citas.aspx.designer.cs">
       <DependentUpon>Citas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\EmailCita.aspx.cs">
+      <DependentUpon>EmailCita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\EmailCita.aspx.designer.cs">
+      <DependentUpon>EmailCita.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Empleados.aspx.cs">
       <DependentUpon>Empleados.aspx</DependentUpon>

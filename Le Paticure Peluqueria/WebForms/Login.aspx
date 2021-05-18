@@ -9,7 +9,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title></title>
     <link href="../CSS/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../CSS/Main.css" rel="stylesheet" type="text/css" />
@@ -29,9 +33,9 @@
                     <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
                     <uc1:wfucPassword runat="server" ID="tbPassword" />
                 </div>
-            </div>
-            <div class="card-footer text-right">
-                <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" />
+                <div class="card-footer text-right">
+                    <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-success" OnClick="btnLogin_Click" Text="Login" />
+                </div>
             </div>
             <br />
             <asp:Label ID="lblMensaje" runat="server"></asp:Label>

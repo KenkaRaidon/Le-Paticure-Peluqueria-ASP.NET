@@ -4,7 +4,11 @@
 
 <html>
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title></title>
     <link href="CSS/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="CSS/Main.css" rel="stylesheet" type="text/css" />
@@ -32,8 +36,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../WebForms/Citas.aspx">Citas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../WebForms/EmailCita.aspx">Email</a>
+                    </li>
                 </ul>
-                <asp:Button ID="btnCerrarSesion" runat="server" CssClass="btn-danger" Text="Cerrar sesion" CausesValidation="false" OnClick="btnCerrarSesion_Click" />
+                <asp:Button ID="btnCerrarSesion" runat="server" CssClass="btn btn-danger btn-sm" Text="Cerrar sesion" CausesValidation="false" OnClick="btnCerrarSesion_Click" />
             </nav>
         </header>
         <div class="container">

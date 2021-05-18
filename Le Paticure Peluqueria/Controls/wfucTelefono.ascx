@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="wfucTelefono.ascx.cs" Inherits="Le_Paticure_Peluqueria.Controls.wfucTelefono" %>
 
 <link href="../CSS/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../CSS/Main.css" rel="stylesheet" type="text/css" />
 
 <asp:TextBox ID="tbTelefono" runat="server" CssClass="form-control"></asp:TextBox>
 

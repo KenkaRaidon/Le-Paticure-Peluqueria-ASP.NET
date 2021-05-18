@@ -51,12 +51,16 @@ namespace Le_Paticure_Peluqueria.WebForms
         {
             tbNombreMascota.Text = string.Empty;
             tbClaveMascota.Text = string.Empty;
+            tbTelCelDueño.Text = string.Empty;
+            tbEmailDueño.Text = string.Empty;
         }
         protected void ControlsSwitch(bool TrueOrFalse)
         {
             tbNombreMascota.Enabled = TrueOrFalse;
             tbClaveMascota.Enabled = TrueOrFalse;
             ddlRaza.Enabled = TrueOrFalse;
+            tbTelCelDueño.Enabled = TrueOrFalse;
+            tbEmailDueño.Enabled = TrueOrFalse;
         }
         #endregion
 
@@ -67,7 +71,9 @@ namespace Le_Paticure_Peluqueria.WebForms
             {
                 NombreMascota = tbNombreMascota.Text.Trim(),
                 ClaveMascota = tbClaveMascota.Text.Trim(),
-                IdRaza = Convert.ToInt32(ddlRaza.Text)
+                IdRaza = Convert.ToInt32(ddlRaza.Text),
+                TelCelDueño=tbTelCelDueño.Text.Trim(),
+                EmailDueño=tbEmailDueño.Text.Trim()
             };
             return Mascota;
         }
@@ -81,13 +87,15 @@ namespace Le_Paticure_Peluqueria.WebForms
                 tbNombreMascota.Text = Mascota.NombreMascota.Trim();
                 tbClaveMascota.Text = Mascota.ClaveMascota.Trim();
                 ddlRaza.Text = Mascota.IdRaza.ToString();
+                tbTelCelDueño.Text = Mascota.TelCelDueño.Trim();
+                tbEmailDueño.Text = Mascota.EmailDueño.Trim();
             }
         }
         protected void VisualizarGrvMascotas()
         {
             ControlsInit();
             pnlGrvMascotas.Visible = true;
-            DataTable dt = consultar("SELECT Mascotas.IdMascota, Mascotas.ClaveMascota, Mascotas.NombreMascota, Raza.Raza FROM Mascotas, Raza WHERE Mascotas.IdRaza=Raza.IdRaza");
+            DataTable dt = consultar("SELECT Mascotas.IdMascota, Mascotas.ClaveMascota, Mascotas.NombreMascota, Raza.Raza, Mascotas.TelCelDueño, Mascotas.EmailDueño FROM Mascotas, Raza WHERE Mascotas.IdRaza=Raza.IdRaza");
             int count = dt.Rows.Count;
             lblNumeroRegistro.Text = count.ToString();
             if (count.Equals(0))
@@ -180,6 +188,8 @@ namespace Le_Paticure_Peluqueria.WebForms
             Mascota.NombreMascota = tbNombreMascota.Text;
             Mascota.ClaveMascota = tbClaveMascota.Text;
             Mascota.IdRaza = Convert.ToInt32(ddlRaza.Text);
+            Mascota.TelCelDueño = tbTelCelDueño.Text;
+            Mascota.EmailDueño = tbEmailDueño.Text;
             lblMensaje.Text = NM.ModificarMascota(Mascota);
             VisualizarGrvMascotas();
         }

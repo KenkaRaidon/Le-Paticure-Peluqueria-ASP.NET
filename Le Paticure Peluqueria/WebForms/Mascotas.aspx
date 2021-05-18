@@ -2,6 +2,10 @@
 
 <%@ Register Src="~/Controls/wfucRequerido.ascx" TagPrefix="uc1" TagName="wfucRequerido" %>
 <%@ Register Src="~/Controls/wfucClave.ascx" TagPrefix="uc1" TagName="wfucClave" %>
+<%@ Register Src="~/Controls/wfucTelefono.ascx" TagPrefix="uc1" TagName="wfucTelefono" %>
+<%@ Register Src="~/Controls/wfucEmail.ascx" TagPrefix="uc1" TagName="wfucEmail" %>
+
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -34,12 +38,13 @@
             <h6 class="text-dark font ml-0">Registros encontrados:
                         <asp:Label ID="lblNumeroRegistro" runat="server" Text=""></asp:Label>
             </h6>
-            <asp:GridView ID="grvMascotas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IdMascota" ForeColor="#333333" GridLines="None" OnRowEditing="grvMascotas_RowEditing" OnRowDeleting="grvMascotas_RowDeleting">
-                <AlternatingRowStyle BackColor="White" />
+            <asp:GridView ID="grvMascotas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IdMascota" OnRowEditing="grvMascotas_RowEditing" OnRowDeleting="grvMascotas_RowDeleting" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
                 <Columns>
                     <asp:BoundField DataField="ClaveMascota" HeaderText="Clave" />
                     <asp:BoundField DataField="NombreMascota" HeaderText="Nombre" />
                     <asp:BoundField DataField="Raza" HeaderText="Raza" />
+                    <asp:BoundField DataField="TelCelDueño" HeaderText="Telefono Dueño" />
+                    <asp:BoundField DataField="EmailDueño" HeaderText="Email Dueño" />
                     <asp:TemplateField InsertVisible="false" ShowHeader="true" HeaderText="EDITAR">
                         <ItemTemplate>
                             <asp:LinkButton ID="grvBtnEditar" runat="server" CommandName="Edit">Editar</asp:LinkButton>
@@ -51,15 +56,15 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
-                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                <SortedDescendingHeaderStyle BackColor="#820000" />
+                <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+                <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+                <RowStyle BackColor="White" ForeColor="#330099" />
+                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
+                <SortedAscendingCellStyle BackColor="#FEFCEB" />
+                <SortedAscendingHeaderStyle BackColor="#AF0101" />
+                <SortedDescendingCellStyle BackColor="#F6F0C0" />
+                <SortedDescendingHeaderStyle BackColor="#7E0000" />
             </asp:GridView>
         </div>
     </asp:Panel>
@@ -92,6 +97,20 @@
                                 <div class="form-group text-dark m-0">
                                     <p class="font-weight-bold mb-1">Raza:</p>
                                     <asp:DropDownList ID="ddlRaza" runat="server"></asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pl-2 pr-2">
+                            <div class="col-lg-3 col-md-3 col col-sm-4">
+                                <div class="form-group text-dark m-0">
+                                    <p class="font-weight-bold mb-1">Telefono Dueño:</p>
+                                    <uc1:wfucTelefono runat="server" ID="tbTelCelDueño" />
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4">
+                                <div class="form-group text-dark m-0">
+                                    <p class="font-weight-bold mb-1">Email Dueño:</p>
+                                    <uc1:wfucEmail runat="server" ID="tbEmailDueño" />
                                 </div>
                             </div>
                         </div>
