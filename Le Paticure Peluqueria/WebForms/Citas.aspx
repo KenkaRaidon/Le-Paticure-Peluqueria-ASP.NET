@@ -2,6 +2,8 @@
 
 <%@ Register Src="~/Controls/wfucRequerido.ascx" TagPrefix="uc1" TagName="wfucRequerido" %>
 <%@ Register Src="~/Controls/wfucClave.ascx" TagPrefix="uc1" TagName="wfucClave" %>
+<%@ Register Src="~/Controls/wfucFechaCita.ascx" TagPrefix="uc1" TagName="wfucFechaCita" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -36,9 +38,9 @@
             <asp:GridView ID="grvCitas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IdCita" OnRowEditing="grvCitas_RowEditing" OnRowDeleting="grvCitas_RowDeleting" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
                 <Columns>
                     <asp:BoundField DataField="ClaveCita" HeaderText="CLAVE CITA" />
-                    <asp:BoundField DataField="Servicio" HeaderText="SERVICIO" />
                     <asp:BoundField DataField="ClaveMascota" HeaderText="CLAVE MASCOTA" />
                     <asp:BoundField DataField="NombreMascota" HeaderText="NOMBRE MASCOTA" />
+                    <asp:BoundField DataField="Servicios" HeaderText="SERVICIO" />
                     <asp:BoundField DataField="FechaCita" HeaderText="FECHA CITA" />
                     <asp:TemplateField InsertVisible="false" ShowHeader="true" HeaderText="EDITAR">
                         <ItemTemplate>
@@ -85,7 +87,22 @@
                             <div class="col-lg-3 col-md-3 col-sm-4">
                                 <div class="form-group text-dark m-0">
                                     <p class="font-weight-bold mb-1">Servicio:</p>
-                                    <asp:DropDownList ID="ddlServicio" runat="server"></asp:DropDownList>
+                                    <asp:CheckBoxList ID="ddlServicio" runat="server"></asp:CheckBoxList>
+                                    <asp:CustomValidator ID="CustomValidator" ErrorMessage="Selecciona al menos un servicio" ForeColor="Red" ClientValidationFunction="ValidateCheckBoxList" runat="server" />
+                                    <script type="text/javascript">
+                                        function ValidateCheckBoxList(sender, args) {
+                                            var checkBoxList = document.getElementById("<%=ddlServicio.ClientID %>");
+                                            var checkboxes = checkBoxList.getElementsByTagName("input");
+                                            var isValid = false;
+                                            for (var i = 0; i < checkboxes.length; i++) {
+                                                if (checkboxes[i].checked) {
+                                                    isValid = true;
+                                                    break;
+                                                }
+                                            }
+                                            args.IsValid = isValid;
+                                        }
+                                    </script>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-4">
@@ -97,7 +114,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-4">
                                 <div class="form-group text-dark m-0">
                                     <p class="font-weight-bold mb-1">Fecha Cita:</p>
-                                    <asp:TextBox ID="tbFechaCita" runat="server" TextMode="DateTimeLocal"></asp:TextBox>
+                                    <uc1:wfucFechaCita runat="server" ID="tbFechaCita" />
                                 </div>
                             </div>
                         </div>

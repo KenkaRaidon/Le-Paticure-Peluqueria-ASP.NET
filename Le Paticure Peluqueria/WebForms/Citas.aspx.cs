@@ -15,7 +15,9 @@ namespace Le_Paticure_Peluqueria.WebForms
     public partial class Citas : System.Web.UI.Page
     {
         E_Cita Cita = new E_Cita();
+        E_CitaServicio CitaServicio = new E_CitaServicio();
         N_Cita NM = new N_Cita();
+        N_CitaServicio NCS = new N_CitaServicio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -68,7 +70,7 @@ namespace Le_Paticure_Peluqueria.WebForms
             E_Cita Cita = new E_Cita()
             {
                 ClaveCita = tbClaveCita.Text.Trim(),
-                IdServicio = Convert.ToInt32(ddlMascota.Text),
+                //IdServicio = Convert.ToInt32(ddlServicio.Text),
                 IdMascota = Convert.ToInt32(ddlMascota.Text),
                 FechaCita= Convert.ToDateTime(tbFechaCita.Text)
             };
@@ -79,19 +81,36 @@ namespace Le_Paticure_Peluqueria.WebForms
             int IdCita = hfIdCita.Value == string.Empty ? 0 : Convert.ToInt32(hfIdCita.Value);
 
             E_Cita Cita = NM.BuscarCita(IdCita);
+            List<E_CitaServicio> CitaServicio=NCS.BuscarCitaServicio(IdCita);
             if (Cita != null)
             {
+                foreach(E_CitaServicio item in CitaServicio)
+                {
+                    foreach(ListItem lbItem in ddlServicio.Items)
+                    {
+                        if (lbItem.Value == item.IdServicio.ToString())
+                        {
+                            lbItem.Selected = true;
+                        }
+                    }
+                }
                 tbClaveCita.Text = Cita.ClaveCita.Trim();
-                ddlServicio.Text = Cita.IdServicio.ToString();
+                //ddlServicio.Text = Cita.IdServicio.ToString();
                 ddlMascota.Text = Cita.IdMascota.ToString();
-                tbFechaCita.Text = Cita.FechaCita.ToString();
+                string year = Cita.FechaCita.Year.ToString();
+                string month = Cita.FechaCita.Month.ToString();
+                string day = Cita.FechaCita.Day.ToString();
+                string hour = Cita.FechaCita.Hour.ToString();
+                string minute = Cita.FechaCita.Minute.ToString();
+                string datetime = year + "-" + month + "-" + day + "T" + hour + ":" + minute;
+                tbFechaCita.Text = DateTime.ParseExact(datetime, "yyyy-M-dTH:m", null).ToString("yyyy-MM-ddTHH:mm");
             }
         }
         protected void VisualizarGrvCitas()
         {
             ControlsInit();
             pnlGrvCitas.Visible = true;
-            DataTable dt = consultar("SELECT Cita.IdCita, Cita.ClaveCita, Servicio.Servicio, Mascotas.ClaveMascota, Mascotas.NombreMascota, Cita.FechaCita FROM Cita, Mascotas, Servicio WHERE Cita.IdServicio=Servicio.IdServicio AND Cita.IdMascota=Mascotas.IdMascota");
+            DataTable dt = consultar("SELECT DISTINCT Cita.IdCita, Cita.ClaveCita, Mascotas.ClaveMascota, Mascotas.NombreMascota, STUFF((SELECT ', ' + Servicio.Servicio FROM Servicio INNER JOIN cita_servicio ON cita_servicio.IdServicio=Servicio.IdServicio WHERE cita_servicio.IdCita=Cita.IdCita FOR XML PATH ('')), 1,2, '') As Servicios, Cita.FechaCita FROM Cita, Mascotas, Servicio, cita_servicio WHERE Cita.IdMascota=Mascotas.IdMascota AND cita_servicio.IdCita=Cita.IdCita AND cita_servicio.IdServicio=Servicio.IdServicio");
             int count = dt.Rows.Count;
             lblNumeroRegistro.Text = count.ToString();
             if (count.Equals(0))
@@ -175,7 +194,15 @@ namespace Le_Paticure_Peluqueria.WebForms
         #region Botones IBM
         protected void btnInsertar_Click(object sender, EventArgs e)
         {
-            lblMensaje.Text = NM.InsertarCita(ControlsWebForm_ObjetoIdentidad());
+            CitaServicio.IdCita = NM.InsertarCita(ControlsWebForm_ObjetoIdentidad());
+            foreach(ListItem item in ddlServicio.Items)
+            {
+                if (item.Selected)
+                {
+                    CitaServicio.IdServicio=Convert.ToInt32(item.Value.ToString());
+                    NCS.InsertaCitaServicio(CitaServicio);
+                }
+            }
             VisualizarGrvCitas();
         }
 
@@ -188,15 +215,20 @@ namespace Le_Paticure_Peluqueria.WebForms
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             Cita.IdCita = Convert.ToInt32(hfIdCita.Value);
+            CheckBoxListModificar(Cita.IdCita);
             Cita.ClaveCita = tbClaveCita.Text;
-            Cita.IdServicio = Convert.ToInt32(ddlServicio.Text);
+            //Cita.IdServicio = Convert.ToInt32(ddlServicio.Text);
             Cita.IdMascota = Convert.ToInt32(ddlMascota.Text);
             Cita.FechaCita = Convert.ToDateTime(tbFechaCita.Text);
             lblMensaje.Text = NM.ModificarCita(Cita);
             VisualizarGrvCitas();
         }
 
-        protected void btnCancelar_Click(object sender, EventArgs e) => ControlsInit();
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ControlsInit();
+            pnlGrvCitas.Visible = true;
+        }
         #endregion
 
         #region Metodos Gridview
@@ -223,8 +255,26 @@ namespace Le_Paticure_Peluqueria.WebForms
             btnModificar.Visible = true;
             lblTituloAccion.Text = "Modificar Cita";
         }
+
         #endregion
-
-
+        protected void CheckBoxListModificar(int IdCita)
+        {
+            List<E_CitaServicio> CitaServicio = NCS.BuscarCitaServicio(IdCita);
+            E_CitaServicio nCitaServicio = new E_CitaServicio();
+            
+            foreach (E_CitaServicio item in CitaServicio)
+            {
+                NCS.BorrarCitaServicio(item.IdCitaServicio);
+            }
+            foreach (ListItem item in ddlServicio.Items)
+            {
+                if (item.Selected)
+                {
+                    nCitaServicio.IdCita = IdCita;
+                    nCitaServicio.IdServicio = Convert.ToInt32(item.Value.ToString());
+                    NCS.InsertaCitaServicio(nCitaServicio);
+                }
+            }
+        }
     }
 }

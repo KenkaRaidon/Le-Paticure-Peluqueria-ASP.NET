@@ -66,6 +66,7 @@
   <ItemGroup>
     <Content Include="Controls\wfucClave.ascx" />
     <Content Include="Controls\wfucEmail.ascx" />
+    <Content Include="Controls\wfucFechaCita.ascx" />
     <Content Include="Controls\wfucMensajeEmail.ascx" />
     <Content Include="Controls\wfucPassword.ascx" />
     <Content Include="Controls\wfucRequerido.ascx" />
@@ -77,6 +78,7 @@
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\jquery-3.2.1.slim.min.js" />
     <Content Include="JS\popper.min.js" />
+    <Content Include="JS\validadorCheckBoxList.js" />
     <Content Include="Web.config" />
     <Content Include="WebForms\Citas.aspx" />
     <Content Include="WebForms\EmailCita.aspx" />
@@ -99,6 +101,13 @@
     </Compile>
     <Compile Include="Controls\wfucEmail.ascx.designer.cs">
       <DependentUpon>wfucEmail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\wfucFechaCita.ascx.cs">
+      <DependentUpon>wfucFechaCita.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\wfucFechaCita.ascx.designer.cs">
+      <DependentUpon>wfucFechaCita.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\wfucMensajeEmail.ascx.cs">
       <DependentUpon>wfucMensajeEmail.ascx</DependentUpon>

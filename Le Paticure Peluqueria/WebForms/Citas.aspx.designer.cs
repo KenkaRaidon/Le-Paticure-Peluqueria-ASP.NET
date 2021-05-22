@@ -129,7 +129,16 @@ namespace Le_Paticure_Peluqueria.WebForms
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlServicio;
+        protected global::System.Web.UI.WebControls.CheckBoxList ddlServicio;
+
+        /// <summary>
+        /// Control CustomValidator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator;
 
         /// <summary>
         /// Control ddlMascota.
@@ -147,7 +156,7 @@ namespace Le_Paticure_Peluqueria.WebForms
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbFechaCita;
+        protected global::Le_Paticure_Peluqueria.Controls.wfucFechaCita tbFechaCita;
 
         /// <summary>
         /// Control btnInsertar.

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data;
 using Entidades;
 using DatosSQL;
+using System.Data.SqlClient;
 
 namespace Negocios
 {
@@ -14,13 +15,34 @@ namespace Negocios
     {
         readonly D_SQL_Datos sqlD = new D_SQL_Datos();
 
-        public string InsertarCita(E_Cita pCita)
+        /*public string InsertarCita(E_Cita pCita)
         {
             pCita.Accion = "INSERTAR";
             string R = sqlD.IBM_Entidad<E_Cita>("IBM_Citas", pCita);
+            int id=pCita.IdCita;
             if (R.Contains("Exito"))
                 return "Exito se ha introducido los datos correctamente";
             return "Error los datos no se han introducido";
+        }*/
+        public int InsertarCita(E_Cita pCita)
+        {
+            pCita.Accion = "INSERTAR";
+            string con = "Data Source=DESKTOP-OTHRDKV\\SQLEXPRESS;Initial Catalog=PeluqueriaPeticure;Integrated Security=True";
+            SqlConnection conn = new SqlConnection(con);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("IBM_Citas", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@IdCita", SqlDbType.Int).Value = pCita.IdCita;
+            cmd.Parameters.Add("@Accion", SqlDbType.NVarChar, 25).Value = pCita.Accion;
+            cmd.Parameters.Add("@ClaveCita", SqlDbType.NChar, 5).Value = pCita.ClaveCita;
+            cmd.Parameters.Add("@IdMascota", SqlDbType.Int).Value = pCita.IdMascota;
+            cmd.Parameters.Add("@FechaCita", SqlDbType.DateTime).Value = pCita.FechaCita;
+            cmd.Parameters.Add("@Temp", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+            cmd.ExecuteNonQuery();
+            int IdCita = int.Parse(cmd.Parameters["@Temp"].Value.ToString());
+            conn.Close();
+            return IdCita;
+
         }
         public string BorrarCita(int pIdCita)
         {
