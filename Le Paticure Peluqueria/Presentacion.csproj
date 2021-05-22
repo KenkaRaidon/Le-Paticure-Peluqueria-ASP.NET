@@ -78,7 +78,6 @@
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\jquery-3.2.1.slim.min.js" />
     <Content Include="JS\popper.min.js" />
-    <Content Include="JS\validadorCheckBoxList.js" />
     <Content Include="Web.config" />
     <Content Include="WebForms\Citas.aspx" />
     <Content Include="WebForms\EmailCita.aspx" />
