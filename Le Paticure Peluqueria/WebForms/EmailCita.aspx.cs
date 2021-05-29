@@ -33,7 +33,7 @@ namespace Le_Paticure_Peluqueria.WebForms
                 MailMessage Email = new MailMessage();
                 Email.SubjectEncoding = Encoding.UTF8;
                 Email.BodyEncoding = Encoding.UTF8;
-                Email.From = new MailAddress("eliezer.ontiveros@uabc.edu.mx");
+                Email.From = new MailAddress("lepaticure98@gmail.com");
                 Email.Subject = pAsunto;
                 Email.Body = pMensaje;
                 Email.To.Add(pEmailDestino);
@@ -42,7 +42,7 @@ namespace Le_Paticure_Peluqueria.WebForms
                 cliente.DeliveryMethod = SmtpDeliveryMethod.Network;
                 cliente.Host = "smtp.gmail.com";
                 cliente.Port = 587;
-                cliente.Credentials = new NetworkCredential("eliezer.ontiveros@uabc.edu.mx", "gogon0987");
+                cliente.Credentials = new NetworkCredential("lepaticure98@gmail.com", "lepaticure0987");
                 cliente.EnableSsl = true;
                 cliente.Send(Email);
             }
